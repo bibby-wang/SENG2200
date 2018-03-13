@@ -1,5 +1,11 @@
 #include "dclink.h"
 #include <iostream>
+//test changes
+///
+//
+//
+//
+
 //default constructor
 DCLink::DCLink(){
 	head = cur = NULL;//默认为空
