@@ -1,0 +1,144 @@
+The University of Newcastle
+School of Electrical Engineering and Computer Science
+SENG2200 Programming Languages & Paradigms
+Semester 1, 2018
+Programming Assignment 1 – Due Sunday March 25, 23:59pm
+
+
+Problem Statement:
+The area of a polygon, specified on the Cartesian plane by its vertices, is given as follows:
+给出的多边形的面积，由它的顶点笛卡尔平面指定，如下所示：
+Note that for a six sided figure, such as the one shown, n is 7, because the last point describing the polygon is equal to the first (it is always the same Cartesian point).
+请注意，对于一个六边形的图形，例如所示的一个图形，n是7，因为描述多边形的最后一个点等于第一个（它总是相同的笛卡尔点）。
+
+Required Solution:
+You are to write a program for a Stock and Station Agent based in Denman, NSW.
+您需要为位于新南威尔士Denman的库存和车站代理编写一个程序。
+Your program will be used to compare different land parcels for their value and how appropriate they are for particular types of agriculture as well as soil conservation and possible pasture improvement. 
+您的计划将用于比较不同地块的价值，以及它们的适宜性，特别是农业类型，土壤保持和不可能的牧场改善。
+Unfortunately this firm, while willing to trust your programming expertise, finds software development very confronting, and so does not trust things like standard libraries for data structures, and so we haven’t even bothered to ask them about things like generics being used in data structures or interfaces.
+不幸的是，这家公司虽然愿意相信你的的编程专业知识，但却不信任软件开发，因此不信任数据结构的标准库等东西，所以我们甚至不能向他们询问诸如数据结构或接口中使用的泛型。
+Consequently, all linked list structures to be used are to be designed and coded from scratch. 
+因此，要使用的所有链表结构都要从头开始设计和编码。  
+You may not use Standard Template Library (STL) or other libraries for data storage manipulation.
+您不得使用标准模板库（STL）或其他库进行数据存储操作。
+You may write any auxiliary classes which are necessary to your design and implementation.
+你可以编写任何对你的设计和实现都有必要的辅助类。
+
+Design and write two classes Point and Polygon.
+设计并编写两个类Point和Polygon。
+
+The Point class simply has two double-precision floating point values for x and y coordinate values.
+Point类只有x和y坐标值有两个双精度浮点值。
+
+It should have a method that will calculate the distance of the point from the origin. 
+它应该有一个方法来计算点与原点的距离。
+
+Your Point class should also contain a to_string() method which will allow the conversion of a Point object into a String of the form (x,y) 
+– include the open and close parentheses and the comma in the String. 
+你的Point类还应该包含一个to_string（）方法，该方法允许将Point对象转换为形式为（x，y）的字符串 
+- 在字符串中包含打开和关闭括号以及逗号。
+
+The x and y values will appear in the string formatted according to the 4.2f specification; the string returned, will be used for the output of your results.
+x和y值 输出到 根据 4.2f 规范格式化 的字符串中; 返回的字符串将用于结果的输出。
+
+The Polygon class contains a sequence of Point objects representing the ordered vertices of the polygon. 
+Polygon类包含一系列表示多边形的有序顶点的Point对象。
+Your Polygon class should contain a to_string() method which will allow the conversion of a Polygon object into a String of the form 
+您的Polygon类应该包含一个to_string（）方法，该方法允许将Polygon对象转换为以下样式字符串.
+
+[point 0 ..... point n-2]: area. 
+
+For the area, the format to be used is 5.2f . This will be used for output of your results.
+对于area的值，要使用的格式是5.2f。 这将用于输出结果。
+
+
+The Polygon class has a method that will calculate the area of the polygon, given by the formula above. You will also need a method to return the distance from the origin of the pointi=(xi,yi) vertex which is closest to the origin. 
+Polygon类具有计算多边形面积的方法，由上面的公式给出。 您还需要一种方法来返回距离原点最近的pointi =（xi，yi）顶点的的距离。
+
+Polygon will implement the ComparePoly interface (or your own interface) as per the above, and the Polygon comparison specification given below.
+Polygon将按照上述实现ComparePoly接口（或您自己的接口），以及下面给出的Polygon比较规范。
+
+You are also required to implement a Circular Doubly-Linked data structure with the class name of MyPolygons, using a single sentinel node to mark the start/finish of what will become a container for Polygon objects.
+您还需要使用MyPolygons的类名实现圆形双链接数据结构，使用单个标记节点标记将成为Polygon对象容器的开始/结束位置。
+The MyPolygons class will contain methods to
+MyPolygons类将包含方法
+1. prepend items into the list (current item is the new first in list),
+2. append items into the list (current item is the first in list)
+3. insert before a specified (current) item, 
+4. step to the next item (making it the current item),
+5. resetting the current item to designate the start of your list, and,
+6. taking an item from the head of the list.
+
+1.将项目前置到列表中（当前项目是列表中的新的第一项），
+2.将项目追加到列表中（当前项目是列表中的第一项）
+3.在指定的（当前）项目之前插入，
+4.进入下一个项目（使其成为当前项目），
+5.重置当前项目以指定列表的开始，并且，
+6.从清单头上取一个项目。
+
+
+If you think that your container needs more methods than these then we can discuss your proposals on Discussion Board or in class, and update these specifications if required.
+如果您认为您的容器需要比这些方法更多的方法，那么我们可以在讨论板或课堂上讨论您的建议，并根据需要更新这些规范。
+
+Input, Required Processing and Output:
+
+输入，必要进程和输出：
+
+The first main task is to read polygon specifications (until end of file/input, from standard input) and place them into an instance of your container, in input order.
+第一个主要任务是读取多边形规范（直到文件尾/输入，从标准输入），并按照输入顺序将它们放入容器的实例中。
+
+Each polygon will be specified in the input by the letter P, followed by the number of sides the polygon has (ie n-1 in the formula above), and then pairs of numbers which represent the respective vertices on the Cartesian plane (x-value then y-value), which means vertices p0 to pn-2 from the above formula. You do not have to worry about any of the data being missing, or out of order. 
+每个多边形将在字母P的输入中指定，然后是多边形的边数（即上面公式中的n-1），然后是表示笛卡尔平面上相应顶点的数字对（x- 值然后是y值），这意味着从上面的公式得到顶点p0到pn-2。
+您不必担心任何数据丢失或失灵。
+
+It will be best for your polygon objects to have an array that will contain all n points, that is, explicitly including the last vertex as a copy of the first, as this will allow the easiest implementation of the area formula, but you may use an alternate means of storing the polygon vertices if you wish.
+对于你的多边形对象最好有一个包含所有n个点的数组，也就是说，明确地包含最后一个顶点作为第一个顶点的副本，因为这样可以最简单的实现区域公式，如果您愿意，也可以使用另一种方法来存储多边形顶点。
+
+You are then to produce a second list, which contains the same set of Polygon objects, but this time, sorted into increasing area order. 
+然后生成第二个列表，其中包含相同的一组Polygon对象，但这次按照面积大小顺序排列。
+This is probably done most simply by placing the polygons into the second list using an insertion sort algorithm.
+这可能是通过使用插入排序算法将多边形放入第二个列表来完成的。
+If any two Polygon objects have areas within 0.05% of each other, then they are assumed to have equal area. 
+如果任何两个Polygon对象的面积都在0.05％以内，则假定它们具有相同的面积。
+In these cases of equal areas, the polygon with the lower minimum vertex distance from the origin, takes precedence (comes first in your sorted list).
+在面积相等的情况下，距离原点的距离较近的多边形优先（排序列表中排在第一位）。
+Output for your assignment is a complete print of both your lists, i.e. the polygons in input order, and then the polygons in sorted order, listing the area of each polygon in each case, as per the Polygon specification of to_string()given above.
+输出是您的列表的完整列表，即输入顺序中的多边形，然后是排序顺序的多边形，按照上面给出的to_string（）的多边形规范列出每种情况下每个多边形的区域。
+
+Example input specification for a 6 sided polygon is:
+P 6 4 0 4 8 7 8 7 3 9 0 7 1
+
+That is, the letter P, then the (integer) number of sides (6), then 6 (in this case) pairs of values for the 6 vertices.
+即，字母P，然后边的（整数）编号（6），然后加入6-（在这种情况下）对值的6个顶点。
+i.e. 6 points in total, being points (4, 0) (4, 8) (7, 8) (7, 3) (9, 0) (7, 1)
+While this example data only uses integer data, floating point values are possible for the x and y values.
+虽然此示例数据仅使用整数数据，但x和y值可能有浮点值。
+Memory Management
+内存管理
+You will need to properly conduct memory management.
+您需要正确进行内存管理。
+
+
+Written Report:
+书面报告：
+As you design, write and test your solution, you are to keep track of and report on the following:
+在设计，编写和测试解决方案时，您需要跟踪并报告以下内容:
+1. For each of the programs keep track of how much time you spend designing, coding and correcting errors, and how many errors you need to correct.
+1.为每个程序记录您花费多少时间进行设计，编码和纠正错误，以及需要纠正多少错误。
+2. Keep a log of what proportion of your errors come from design errors and what proportion from coding/implementation errors.
+2.记录您的错误占设计错误的比例，以及编码/实现错误的比例。
+3. Given what we have covered in Topic 3 (Inheritance), how could you now treat Rectangles, and Squares as special cases in this problem?
+3.鉴于我们在主题3（继承）中所涵盖的内容，你现在怎么能把矩形和正方形作为这个问题的特例？
+As a guide, aim for between one and two pages, and format this as a report; not a text file or something.
+作为指导，目标在1到2页之间，并将其作为报告进行格式化; 不是文本文件或其他东西。
+
+
+Submission:
+Submission is through the Assessment tab for SENG2200 on Blackboard under the entry Submit PA1. If you submit more than once then only the latest will be graded. Every submission must contain a) an assessment item cover sheet, b) the written report, and c) your program source files. Please submit a single file called c9999999PA1.zip (where 9…9 is your student number); do not submit .rar or .gz or any other type of archive file.
+Coding Language and Compilation:
+Programming is in C++, and will be compiled as per the standard lab environment.
+Provide a makefile that the marker will expect to be able to compile your program with the command make, and to run your program with the command ./PA1, within a command prompt window.
+Your application will run and take data from a standard text file (in the form given above) which will include multiple polygons definitions – note: that you may assume that that number of points specified for the Polygon will always be correct – and will be specified from the command line, in form ./PA1 test.dat
+It is expected that PA1 will a) be in the root of your submission folder, and b) compile the entire project without any special requirements (including additional software). You may include a readme.txt file, if you require any special switches or compilation method to be used; but this may incur a penalty if you stray too far from the above guide lines.
+You may only use C++ libraries for input and output. All input to the program will come from standard input. All output is to standard output.
