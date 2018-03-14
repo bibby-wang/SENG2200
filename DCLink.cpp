@@ -1,6 +1,6 @@
 #include "dclink.h"
 #include <iostream>
-#include <math.h> // fabs() for Absolute value
+
 //default constructor
 DCLink::DCLink(){
 	head = cur = NULL;//默认为空
@@ -233,15 +233,15 @@ int main(void){
 	int n=7;
 	
 	for (int i=0; i<=n-2; i++){
-		sum=sum+n;
+		sum=sum+i;
 	}
 	
-	double NG=-1;
+
 	
-	NG=0.333*sum*NG;
+	if (sum < 0){sum = sum * -1;}//for get the Absolute value
 	
-	std::cout<<"==== The SUM: "<< sum <<std::endl;
-	std::cout<<"==== The NG: "<< NG <<"[abs]="<< fabs(NG) <<std::endl;//abs() int 绝对值, fabs() double绝对值
+	
+	std::cout<<"==== The SUM: "<< sum <<std::end
 	std::cout<<"==== The End of Formula===== "<<std::endl;
 	
 	//P 6 4 0 4 8 7 8 7 3 9 0 7 1
@@ -253,6 +253,11 @@ int main(void){
 	//points
 	//x,y
 	//to_string make the (x,y)
+	
+	
+	//format inpout
+	String str_input="P 6 4 0 4 8 7 8 7 3 9 0 7 1";
+	
 	
 	
 	return 0;
