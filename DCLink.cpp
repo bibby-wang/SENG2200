@@ -1,5 +1,6 @@
 #include "dclink.h"
 #include <iostream>
+#include <string>
 
 //default constructor
 DCLink::DCLink(){
@@ -241,7 +242,7 @@ int main(void){
 	if (sum < 0){sum = sum * -1;}//for get the Absolute value
 	
 	
-	std::cout<<"==== The SUM: "<< sum <<std::end
+	std::cout<<"==== The SUM: "<< sum <<std::endl;
 	std::cout<<"==== The End of Formula===== "<<std::endl;
 	
 	//P 6 4 0 4 8 7 8 7 3 9 0 7 1
@@ -255,10 +256,13 @@ int main(void){
 	//to_string make the (x,y)
 	
 	
-	//format inpout
-	String str_input="P 6 4 0 4 8 7 8 7 3 9 0 7 1";
+	//format ioput
+	std::string str_input="P 6 4 0 4 8 7 8 7 3 9 0 7 1";
 	
+	std::cout<<"==== format ioput ==="<<std::endl;
 	
+	char stt[6]={'A','B','C','D','E','\0'};
+	std::cout<<"stt:"<<stt<<std::endl;
 	
 	return 0;
 }
