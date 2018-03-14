@@ -1,11 +1,6 @@
 #include "dclink.h"
 #include <iostream>
-//test changes
-///
-//
-//CHANGE ON OTHER COMPUTER
-//
-
+#include <math.h> // fabs() for Absolute value
 //default constructor
 DCLink::DCLink(){
 	head = cur = NULL;//默认为空
@@ -210,8 +205,9 @@ DCLink::~DCLink()
 
 int main(void){
 	DCLink dcl;
-	for (int i = 10; i > 0; i--)
+	for (int i = 10; i > 0; i--){
 		dcl.add(i);
+	}
 	dcl.print();
 	std::cout<<std::endl;
 	dcl.sort();
@@ -225,11 +221,68 @@ int main(void){
 	dcl.deleteData(3);
 	dcl.deleteData(6);
 	dcl.add(5);
-	for (int i = 1; i < 7; i++)
+	for (int i = 1; i < 7; i++){
 		std::cout<<dcl.getData(i)<<std::endl;
-	
+	}
 	std::cout<<"the sizeof DCLink is "<<dcl.getLength()<<std::endl;
 	dcl.print();
-
+	//add test of formula A= 1/2 |(sum (x+x0)(y-y0))|
+	std::cout<<"======================== "<<std::endl;
+	std::cout<<"Test of Formula"<<std::endl;
+	int sum=0;
+	int n=7;
+	
+	for (int i=0; i<=n-2; i++){
+		sum=sum+n;
+	}
+	
+	double NG=-1;
+	
+	NG=0.333*sum*NG;
+	
+	std::cout<<"==== The SUM: "<< sum <<std::endl;
+	std::cout<<"==== The NG: "<< NG <<"[abs]="<< fabs(NG) <<std::endl;//abs() int 绝对值, fabs() double绝对值
+	std::cout<<"==== The End of Formula===== "<<std::endl;
+	
+	//P 6 4 0 4 8 7 8 7 3 9 0 7 1
+	//That is, the letter P, then the (integer) number of sides (6),
+	// then 6 (in this case) pairs of values for the 6 vertices.
+	//i.e. 6 points in total, being points (4, 0) (4, 8) (7, 8) (7, 3) (9, 0) (7, 1)
+	
+	//
+	//points
+	//x,y
+	//to_string make the (x,y)
+	
+	
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
