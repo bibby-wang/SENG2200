@@ -119,8 +119,16 @@ While this example data only uses integer data, floating point values are possib
 虽然此示例数据仅使用整数数据，但x和y值可能有浮点值。
 Memory Management
 内存管理
-You will need to properly conduct memory management.
+You will need to properly con duct memory management.
 您需要正确进行内存管理。
+
+
+
+
+
+
+
+
 
 
 Written Report:
