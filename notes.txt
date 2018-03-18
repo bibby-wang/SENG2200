@@ -1,9 +1,12 @@
-The University of Newcastle
-School of Electrical Engineering and Computer Science
-SENG2200 Programming Languages & Paradigms
-Semester 1, 2018
-Programming Assignment 1 – Due Sunday March 25, 23:59pm
-
+// The University of Newcastle
+// School of Electrical Engineering and Computer Science
+// SENG2200 Programming Languages & Paradigms
+// Semester 1, 2018
+// Programming Assignment 1
+// Due Sunday March 25, 23:59pm
+// Author: Binbin Wang
+// Modified by: Binbin Wang
+// Student No: 3214157
 
 Problem Statement:
 The area of a polygon, specified on the Cartesian plane by its vertices, is given as follows:
