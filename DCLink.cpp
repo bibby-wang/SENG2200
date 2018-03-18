@@ -1,7 +1,8 @@
 #include "dclink.h"
 #include <iostream>
-#include <string>
 
+#include <string>
+using namespace std;
 //default constructor
 DCLink::DCLink(){
 	head = cur = NULL;//默认为空
@@ -168,7 +169,7 @@ int DCLink::rePrint()const{//打印链表
 		int count = 0;//计数
 		while (size != count){
 			temp = temp->pre;
-			std::cout<<temp->data<<std::endl;
+			cout<<temp->data<<endl;
 			count++;
 		}
 		return 0;
@@ -180,7 +181,7 @@ int DCLink::print()const{//打印链表
 		struct dclink *temp = head;
 		int count = 0;//计数
 		while (size != count){
-			std::cout<<temp->data<<"  ";
+			cout<<temp->data<<"  ";
 			temp = temp->next;
 			count++;
 		}
@@ -204,16 +205,94 @@ DCLink::~DCLink()
 	}
 }
 
+
+
+
+
+
+/* typedef long long LL;
+
+double round(double number, unsigned int bits) {
+	
+	
+	
+	
+    LL intPart = number;
+    number -= intPart;
+    for (unsigned int i = 0; i < bits; ++i)
+        number *= 10;
+    number = (LL) (number + 0.5);
+    for (unsigned int i = 0; i < bits; ++i)
+        number /= 10;
+    return intPart + number;
+}
+ */
+
+ //Square root of number >= 0 
+ 			double getSquareRoot(double num)
+			{
+				if (num<=0) return 0; // if <0 do not Calculation
+				double root = num;
+				double stopPoint;
+				while(true) 
+				{
+					stopPoint=root;
+					root= (root+num/root)/2;//Newton's method
+					double gapT = stopPoint - root;//relative error
+					if (gapT<0) gapT*=-1;
+					if (gapT<0.00001) return root;//make relative error less than 0.00001
+					
+				}
+				return root;
+			}			
+ 
+ 
+ 
+ 
+ 
+ 
+//format a double number to "%n.nf" and return a strings
+string formatStr(double number,unsigned int intSize, unsigned int bitSize) {
+	
+
+	string toStr;
+	long intStyle;
+	string tempToStr;
+	if (number<1)
+	{
+		tempToStr+="0";   //if number <1 add "0" in the first of string
+	}
+	
+	for (unsigned int i = 0; i < bitSize; ++i)
+	{
+        number *= 10;  //Shift the decimal point
+	}
+    number += 0.5; //rounding
+	intStyle = number;//delete useless decimals
+
+    tempToStr += to_string(intStyle);//get the number string
+	while (tempToStr.size()<(intSize-1))
+	{
+		tempToStr=" "+tempToStr; //Supplementary vacancy
+	}
+	toStr = tempToStr.substr(0,tempToStr.size()-2) + "." + tempToStr.substr(tempToStr.size()-2,2);//add the "." into string
+
+
+    return toStr;
+}
+
+
+
 int main(void){
 	DCLink dcl;
 	for (int i = 10; i > 0; i--){
 		dcl.add(i);
 	}
 	dcl.print();
-	std::cout<<std::endl;
+	cout<<endl;
 	dcl.sort();
  	dcl.print();
-	std::cout<<std::endl;
+	cout<<endl;
 	dcl.modify(1,10);
 	dcl.modify(5,44);
 	dcl.modify(3,33);
@@ -223,13 +302,13 @@ int main(void){
 	dcl.deleteData(6);
 	dcl.add(5);
 	for (int i = 1; i < 7; i++){
-		std::cout<<dcl.getData(i)<<std::endl;
+		cout<<dcl.getData(i)<<endl;
 	}
-	std::cout<<"the sizeof DCLink is "<<dcl.getLength()<<std::endl;
+	cout<<"the sizeof DCLink is "<<dcl.getLength()<<endl;
 	dcl.print();
 	//add test of formula A= 1/2 |(sum (x+x0)(y-y0))|
-	std::cout<<"======================== "<<std::endl;
-	std::cout<<"Test of Formula"<<std::endl;
+	cout<<"======================== "<<endl;
+	cout<<"Test of Formula"<<endl;
 	int sum=0;
 	int n=7;
 	
@@ -242,8 +321,8 @@ int main(void){
 	if (sum < 0){sum = sum * -1;}//for get the Absolute value
 	
 	
-	std::cout<<"==== The SUM: "<< sum <<std::endl;
-	std::cout<<"==== The End of Formula===== "<<std::endl;
+	cout<<"==== The SUM: "<< sum <<endl;
+	cout<<"==== The End of Formula===== "<<endl;
 	
 	//P 6 4 0 4 8 7 8 7 3 9 0 7 1
 	//That is, the letter P, then the (integer) number of sides (6),
@@ -255,15 +334,54 @@ int main(void){
 	//x,y
 	//to_string make the (x,y)
 	
-	
+/* 	
 	//format ioput
-	std::string str_input="P 6 4 0 4 8 7 8 7 3 9 0 7 1";
+	string str_input="P 6 4 0 4 8 7 8 7 3 9 0 7 1";
 	
-	std::cout<<"==== format ioput ==="<<std::endl;
+	cout<<"==== format ioput ==="<<endl;
 	
 	char stt[6]={'A','B','C','D','E','\0'};
-	std::cout<<"stt:"<<stt<<std::endl;
-	
+	cout<<"stt:"<<stt<<endl;
+ */
+	cout<<"==== format xy 4.2f	==="<<endl;
+
+
+		//string formatStr;
+		
+		//char Xstr[10];
+		//char Ystr[10];
+		double X;
+		double Y;
+		double Z;
+		X=13.4455199;
+		Y=11.44499001;
+		Z=0.105001111;
+		
+
+	    cout<<"==== format xy 4.2f X:"<<endl;
+		printf("%5.2f",X);
+		cout<<endl;
+		printf("%5.2f",Y);
+		cout<<endl;
+	cout<<"==================="<<endl;  
+
+	cout<<"===4.0=="<<getSquareRoot(4.0)<<endl;  
+	cout<<"===0.0000014===="<<getSquareRoot(0.0000014)<<endl;  
+	cout<<"==7=========="<<getSquareRoot(7.0)<<endl;  
+	cout<<"=====79.23========"<<getSquareRoot(79.23)<<endl;  
+
+	cout<<"==================="<<endl;  
+		cout<<"4.2f X:"<<formatStr(X,4,2)<<endl;
+		cout<<"5.2f X:"<<formatStr(X,5,2)<<endl;
+		cout<<"4.2f Y:"<<formatStr(Y,4,2)<<endl;
+		cout<<"5.2f Y:"<<formatStr(Y,5,2)<<endl;
+		cout<<"4.2f Z:"<<formatStr(Z,4,2)<<endl;
+		cout<<"5.2f Z:"<<formatStr(Z,5,2)<<endl;
+
+
+
+	cout<<"========OOOO=="<<getSquareRoot(X*X+Y*Y)<<endl; 
+
 	return 0;
 }
 
