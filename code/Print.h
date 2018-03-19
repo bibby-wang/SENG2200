@@ -43,7 +43,8 @@ namespace BB_A1
 //to string 
 			string to_strings();
 
-			
+			double getX();
+			double getY();
 			
 
 			

@@ -18,8 +18,16 @@ namespace BB_A1
 		X=inputX;//set the value of X
 		Y=inputY;//set the value of Y
 
-	}		
-
+	}
+	
+	double Print::getX()
+	{
+		return X;
+	}
+	double Print::getY()
+	{
+		return Y;
+	}
 
 	
 //Square root of a number >= 0 

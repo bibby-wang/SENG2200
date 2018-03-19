@@ -16,7 +16,7 @@
 
 #include "point.h"
 using namespace std;
-using namespace BB_A1
+namespace BB_A1
 
 {
 	class Polygon
@@ -24,81 +24,29 @@ using namespace BB_A1
 		public:
 			
 			
-			~Polygon() //Destructor Node
-			{
-				
-			}
-			void setPolygon()
-			{
-				Point[] point = new Point[];
+			~Polygon(){} //Destructor Node
+			Polygon();
+			Polygon(string data);
 			
-			}
+			
+			//the area of polygon
+			string getAreaOfPolygon();
+			
+			double closestToTheOrgin(); 
+			
 
 			
- //Square root of a number >= 0 
- 			double getSquareRoot(double number)
-			{
-				if (number<=0) return 0; // if <0 do not Calculation
-				double root = number;
-				double stopPoint;
-				while(true) 
-				{
-					stopPoint=root;
-					root= (root+number/root)/2;//Newton's method
-					double gapT = stopPoint - root;//relative error
-					if (gapT<0) gapT*=-1;
-					if (gapT<0.00001) return root;//make relative error less than 0.00001
-					
-				}
-				return root;
-			}			
- 
-			
-			double distanceOrigin()//calculate the distance of the point from the origin.
-			{
-				double tempNum;
-				tempNum=X*X+Y*Y;
-				return getSquareRoot(tempNum);
-			}
+//Square root of a number >= 0 
+ 			double getSquareRoot(double number);
 			
 //format a double number to "%n.nf" and return a strings
-			string formatStr(double number,unsigned int intSize, unsigned int bitSize) {
-				
-
-				string toStr;
-				long intStyle;
-				string tempToStr;
-				if (number<1)
-				{
-					tempToStr+="0";   //if number <1 add "0" in the first of string
-				}
-				
-				for (unsigned int i = 0; i < bitSize; ++i)
-				{
-					number *= 10;  //Shift the decimal point
-				}
-				number += 0.5; //rounding
-				intStyle = number;//delete useless decimals
-
-				tempToStr += to_string(intStyle);//get the number string
-				while (tempToStr.size()<(intSize-1))
-				{
-					tempToStr=" "+tempToStr; //Supplementary vacancy
-				}
-				toStr = tempToStr.substr(0,tempToStr.size()-2) + "." + tempToStr.substr(tempToStr.size()-2,2);//add the "." into string
-
-
-				return toStr;
-			}
+			string formatStr(double number,unsigned int intSize, unsigned int bitSize);
 //to string 
-			string to_string()
-			{
-
-				string formatStr;
-				formatStr="("+formatStr(X,4,2)+","+formatStr(Y,4,2)+")";// format the print to (x,y)
-
-				return formatStr;
-			}
+			string to_strings();
+		
+		private:
+			Point point = new Point[];
+			int sideNum;
 			
 	};
 
