@@ -45,7 +45,7 @@ namespace BB_A1
 			string to_strings();
 		
 		private:
-			Point point = new Point[];
+			Point *p= Point;
 			int sideNum;
 			
 	};

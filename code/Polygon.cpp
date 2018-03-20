@@ -11,6 +11,7 @@
 #include <string>
 
 #include <iostream>
+#include <sstream>
 
 #include "point.h"
 #include "Polygon.h"
@@ -32,9 +33,10 @@ namespace BB_A1
 	}
 	Polygon::Polygon(string data,int l)
 	{
-		Point[] point = new Point[l];
+		Point *point = Point[];
 		
-		P[i]=data
+		
+		P[l]=data;
 		
 		for (int i = 0; i<=l; i++)
 		{
@@ -101,8 +103,9 @@ namespace BB_A1
 		
 
 		string toStr;
-		long intStyle;
+		long intPart;
 		string tempToStr;
+		ostringstream oss;
 		if (number<1)
 		{
 			tempToStr+="0";   //if number <1 add "0" in the first of string
@@ -113,9 +116,11 @@ namespace BB_A1
 			number *= 10;  //Shift the decimal point
 		}
 		number += 0.5; //rounding
-		intStyle = number;//delete useless decimals
+		intPart = number;//delete useless decimals
 
-		tempToStr += to_string(intStyle);//get the number string
+		oss << intPart;//int to string
+		
+		tempToStr += oss.str();//get the number string
 		while (tempToStr.size()<(intSize-1))
 		{
 			tempToStr=" "+tempToStr; //Supplementary vacancy

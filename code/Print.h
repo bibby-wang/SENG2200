@@ -11,6 +11,7 @@
 #ifndef PRINT_H
 #define PRINT_H
 #include <string>
+#include <sstream>
 #include <iostream>
 
 using namespace std;

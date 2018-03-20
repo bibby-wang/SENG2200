@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include <fstream> 
 #include <string>
 #include "Print.h"
 
@@ -8,12 +8,94 @@
 
 using namespace std;
 using namespace BB_A1;
-int main(void){
+int main(int argc, char *argv[])
+{
+	cout<<"====input test========"<<endl; 
+	
+	string inputData;
+	inputData = argv[1];
+
+	cout << "input is: " << inputData<<endl;
+
+
+	
+    ifstream dataIn(inputData);
+    string dataStr;
+    string polygonData;
+	string pData;
+
+    int count = 0;
+
+	if(dataIn) // find the file test.dat  
+    { 
+	
+		while (dataIn >> dataStr)
+		{
+		
+			//cout<<"---"<<count<<"=="<<dataStr<<endl;///
+			//get polygon data
+			polygonData = dataStr;
+
+			
+			if (dataStr == "P")
+			{
+				count++;
+				//cout<<"===in if ===="<<endl;//
+				dataIn >> dataStr;
+				int sitsP = stoi(dataStr);
+		cout<<"====="<<sitsP<<endl;//
+				for (int i=0;i<sitsP;i++)
+				{
+					dataIn >> dataStr;
+					
+					cout<<"x["<<dataStr<<"]";
+					dataIn >> dataStr;
+					
+					cout<<"y:["<<dataStr<<"]";					
+					
+					
+					
+				}
+				
+			}
+			
+			//cout<<"===="<<count<<"===="<<polygonData<<endl;
+			//dataIn >> dataStr;
+			//polygonData = dataStr;
+			//get name
+			// polygonData = dataStr;
+//cout<<"===="<<count<<"===="<<polygonData<<endl;
+//cout<<"======================="<<count<<"===="<<endl;
+			//get grade		
+			// dataIn >> dataStr;
+			// studentGrade = atof(dataStr.c_str());
+
+			// Student studentInf(polygonData, studentGrade);
+			// studentTree.insert(studentInf);
+
+		}
+    }  
+    else 
+    {  
+		// not find the file data.txt 
+        cout <<"==Not found data file==" << endl;  
+    } 
+ 
+
+
+	
+	cout<<"==================="<<endl;
+	cout<<"==================="<<endl;
+
+
+
+  	
 	double X=3.00;
 	double Y=4.00;
 	
 	Print p1(X,Y);
 
+	
 	Print pA[6]=
 	{
 	Print(2,5),
@@ -75,6 +157,9 @@ int main(void){
 	{
 		cout<<"=BS"<<i<<"="<< pB[i].getX()<<endl;  
 	}
+	
+	cout<<"==================="<<endl;  
+
 	
 	cout<<"==================="<<endl;  
 

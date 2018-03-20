@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall 
 LDFLAGS=
 SOURCES=dclink.h DCLink.cpp
 

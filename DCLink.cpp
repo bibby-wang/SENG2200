@@ -1,5 +1,6 @@
 #include "dclink.h"
 #include <iostream>
+#include <sstream>
 
 #include <string>
 using namespace std;
@@ -254,28 +255,30 @@ double round(double number, unsigned int bits) {
 //format a double number to "%n.nf" and return a strings
 string formatStr(double number,unsigned int intSize, unsigned int bitSize) {
 	
+		string toStr;
+		long intPart;
+		string tempToStr;
+		ostringstream oss;
+		if (number<1)
+		{
+			tempToStr+="0";   //if number <1 add "0" in the first of string
+		}
+		
+		for (unsigned int i = 0; i < bitSize; ++i)
+		{
+			number *= 10;  //Shift the decimal point
+		}
+		number += 0.5; //rounding
+		intPart = number;//delete useless decimals
 
-	string toStr;
-	long intStyle;
-	string tempToStr;
-	if (number<1)
-	{
-		tempToStr+="0";   //if number <1 add "0" in the first of string
-	}
-	
-	for (unsigned int i = 0; i < bitSize; ++i)
-	{
-        number *= 10;  //Shift the decimal point
-	}
-    number += 0.5; //rounding
-	intStyle = number;//delete useless decimals
-
-    tempToStr += to_string(intStyle);//get the number string
-	while (tempToStr.size()<(intSize-1))
-	{
-		tempToStr=" "+tempToStr; //Supplementary vacancy
-	}
-	toStr = tempToStr.substr(0,tempToStr.size()-2) + "." + tempToStr.substr(tempToStr.size()-2,2);//add the "." into string
+		oss << intPart;//int to string
+		
+		tempToStr += oss.str();//get the number string
+		while (tempToStr.size()<(intSize-1))
+		{
+			tempToStr=" "+tempToStr; //Supplementary vacancy
+		}
+		toStr = tempToStr.substr(0,tempToStr.size()-2) + "." + tempToStr.substr(tempToStr.size()-2,2);//add the "." into string
 
 
     return toStr;
@@ -353,7 +356,7 @@ int main(void){
 		double X;
 		double Y;
 		double Z;
-		X=13.4455199;
+		X=13.1;
 		Y=11.44499001;
 		Z=0.105001111;
 		
