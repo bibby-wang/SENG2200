@@ -171,6 +171,9 @@ cout<<"====="<<sitsP<<endl;//
 	cout<<"==================="<<endl;  
 
 	
+	cout<<"==================="<<endl;  
+
+	
 	Point *ppp;
 	int sss;
 	cin>>sss;
@@ -179,9 +182,10 @@ cout<<"====="<<sitsP<<endl;//
 	ppp[0].setXY(1.1,3.2);
 	ppp[1].setXY(3.1,3.2);
 	ppp[2].setXY(4.1,4.2);
+	ppp[3]=ppp[0];
 	
-	
-	cout<<ppp[0].to_strings()<<endl;
+	cout<<ppp[0].to_string()<<endl;
+	cout<<ppp[3].to_string()<<endl;
 	cout<<"==================="<<endl;  
 
 

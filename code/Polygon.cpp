@@ -20,33 +20,33 @@ namespace BB_A1
 
 
 
-	Polygon::Polygon(int setEdgesNum,string pointsData)
+	Polygon::Polygon(string dataStr)
 	{
-		edgesNum=setEdgesNum;
-		points= new Point[edgesNum];
 		
-		//get polygon data
+		istringstream polygonData(dataStr);
+		string datas;
+		polygonData>>datas;	
+		if (datas == "P")
+		{
+			polygonData>>datas;
+			edgesNum = stoi(datas);
+			points= new Point[edgesNum+1];
+	
+			//get polygon data
 
-		
-
-
-		for (int i=0;i<pointsData.size();i++)
-		{		
-			if (pointsData[i] != " ")
+			for(int i=0;i<edgesNum;i++)
 			{
-				getInupurData >> dataStr;
+				polygonData>>datas;
+				double X= stod(datas);
+				polygonData>>datas;
+				double Y=stod(datas);
 				
-				cout<<"x["<<dataStr<<"]";
-				getInupurData >> dataStr;
-				
-				cout<<"y:["<<dataStr<<"]";					
-				
-				
-				
+				points[i].setXY(X,Y);
+				cout<<i<<"====["<<X<<","<<Y<<"]"<<endl;
 			}
-			
+			points[edgesNum]=points[0];
 		}
-			
+		
 
 		
 	}
@@ -56,9 +56,9 @@ namespace BB_A1
 	double Polygon::getAreaOfPolygon()
 	{
 		double areaOfPolygon=0.0;
-		for (int i=0; i < sideNum;i++)
+		for (int i=0; i < edgesNum;i++)
 		{
-			areaOfPolygon=areaOfPolygon+(pA[i+1].getX() + pA[i].getX()) * ( pA[i+1].getY() - pA[i].getY());
+			areaOfPolygon=areaOfPolygon+(points[i+1].getX() + points[i].getX()) * ( points[i+1].getY() - points[i].getY());
 		}
 		if (areaOfPolygon < 0)
 		{	
@@ -71,19 +71,23 @@ namespace BB_A1
 	}
 	
 	//the closest point to  origin
-	double Polygon::closestOrigin()
+	string Polygon::closestToOrigin()
 	{
 		double distanceOriginValue;
-		double distanceOriginValue=point[0].distanceOrigin() ;
-		
-		for(int i=1;i <= sideNum;i++)
+		distanceOriginValue=points[0].distanceOrigin() ;
+		int num=0;
+		for(int i=1;i <= edgesNum;i++)
 		{
-			if (distanceOriginValue > point[i].distanceOrigin())
+			if (distanceOriginValue > points[i].distanceOrigin())
 			{
-				distanceOriginValue = point[i].distanceOrigin();
+				distanceOriginValue = points[i].distanceOrigin();
+				num=i;
 			}
 		}
-			return distanceOriginValue;
+		ostringstream stream;
+		stream<<num;
+		string outputString="point"+stream.str()+points[num].to_string();
+			return outputString;
 	}
 
 //Square root of a number >= 0 
@@ -137,15 +141,17 @@ namespace BB_A1
 		return toStr;
 	}
 	//to string 
-	string Polygon::to_strings(){
+	string Polygon::to_string()
+	{
 		string outstring;
-		outstring = "[" + point[0].to_string();
-		for(int i =1; i < point.size()-1; i++)
+		outstring = "[";
+		for(int i =0; i <= edgesNum; i++)
 		{
-			outstring = outstring + "," + point[i].to_string();
+			outstring = outstring + points[i].to_string();
 		}
 		
-		outstring =outstring + "]" + getAreaOfPolygon();
+		outstring =outstring + "]: " + formatStr(getAreaOfPolygon(),5,2);
+		return outstring;
 	}
 	
 }

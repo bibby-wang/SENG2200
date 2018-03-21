@@ -26,19 +26,24 @@ namespace BB_A1
 			 //Destructor Node
 			~Polygon()
 			{
-				delete []points;
+				//delete []points;
 			}
 			
-			
-			Polygon(int edgesNum);
 			//Constructor
-			Polygon(){}
+			Polygon();
+
+
+			
+			Polygon(string dataStr);
+			
+			
+
 			
 			
 			//the area of polygon
-			string getAreaOfPolygon();
+			double getAreaOfPolygon();
 			
-			double closestToTheOrgin(); 
+			string closestToOrigin(); 
 			
 
 			
@@ -48,7 +53,7 @@ namespace BB_A1
 //format a double number to "%n.nf" and return a strings
 			string formatStr(double number,unsigned int intSize, unsigned int bitSize);
 //to string 
-			string to_strings();
+			string to_string();
 		
 		private:
 			Point *points;

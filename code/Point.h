@@ -47,7 +47,7 @@ namespace BB_A1
 //format a double number to "%n.nf" and return a strings
 			string formatStr(double number,unsigned int intSize, unsigned int bitSize);
 //to string 
-			string to_strings();
+			string to_string();
 
 			double getX();
 			double getY();

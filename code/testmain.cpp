@@ -3,7 +3,7 @@
 #include <fstream> 
 #include <string>
 #include "Point.h"
-
+#include "Polygon.h"
 
 
 using namespace std;
@@ -29,39 +29,24 @@ int main(int argc, char *argv[])
 	if(getInupurData) // find the file test.dat  
     { 
 	
-		//while (getInupurData >> dataStr)
-		while (getline(getInupurData,dataStr))
-		{
 		
-			//cout<<"---"<<count<<"=="<<dataStr<<endl;///
-			//get polygon data
-			//polygonData = dataStr;
+		//while (getline(getInupurData,dataStr))
+		getline(getInupurData,dataStr);
+		
 
-			cout<<dataStr<<endl; 
-
+		cout<<dataStr<<endl; 
+		Polygon polygonA(dataStr);
+		cout<<"|||||"<<polygonA.to_string()<<endl;
 			
-			
-			double X, Y;
-			istringstream polygonData(dataStr);
-			string datas;
-			polygonData>>datas;
-			if (datas == "P")
-			{	
-				polygonData>>datas;
-				int edegsN = stoi(datas);
-				for(int i=0;i<edegsN;i++)
-				{
-					polygonData>>datas;
-					X= stod(datas);
-					polygonData>>datas;
-					Y=stod(datas);
-					cout<<i<<"====["<<X<<","<<Y<<"]"<<endl;
-				}
-				
-			}
+		getline(getInupurData,dataStr);
+		
 
+		cout<<dataStr<<endl; 
+		Polygon polygonB(dataStr);
+		cout<<"|||||"<<polygonB.to_string()<<endl;
+		cout<<"|colsespoint:||"<<polygonB.closestToOrigin()<<endl;
 
-		}
+		
     }  
     else 
     {  
@@ -70,20 +55,7 @@ int main(int argc, char *argv[])
     } 
  
 	
-	cout<<"==================="<<endl;  
 
-	
-	Point *ppp;
-	int sss;
-	cin>>sss;
-	ppp= new Point[sss];
-	
-	ppp[0].setXY(1.1,3.2);
-	ppp[1].setXY(3.1,3.2);
-	ppp[2].setXY(4.1,4.2);
-	
-	
-	cout<<ppp[0].to_strings()<<endl;
 	cout<<"==================="<<endl;  
 
 

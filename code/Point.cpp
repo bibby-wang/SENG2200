@@ -97,7 +97,7 @@ namespace BB_A1
 	
 	
 //to string 
-	string Point::to_strings()
+	string Point::to_string()
 	{
 
 		string fStr;
