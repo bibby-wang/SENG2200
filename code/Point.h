@@ -8,8 +8,8 @@
 // Modified by: Binbin Wang
 // Student No: 3214157
 
-#ifndef PRINT_H
-#define PRINT_H
+#ifndef Point_H
+#define Point_H
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -18,18 +18,23 @@ using namespace std;
 namespace BB_A1
 
 {
-	class Print
+	class Point
 	{
 		public:
 			
 			
-			~Print() //Destructor Node
+			~Point() //Destructor Node
+			{
+				X=0.0;
+				Y=0.0;
+			}			
+			Point() //Destructor Node
 			{
 				X=0.0;
 				Y=0.0;
 			}
 
-			Print(double inputX,double inputY);
+			Point(double inputX,double inputY);
 
 
 			
@@ -46,6 +51,7 @@ namespace BB_A1
 
 			double getX();
 			double getY();
+			void setXY(double setX,double setY);
 			
 
 			

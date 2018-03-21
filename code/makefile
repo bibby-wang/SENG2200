@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=Print.cpp testmain.cpp
+SOURCES=Point.cpp testmain.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)
 

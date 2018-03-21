@@ -8,30 +8,34 @@
 // Modified by: Binbin Wang
 // Student No: 3214157
 
-#include "Print.h"
+#include "Point.h"
 
 namespace BB_A1
 {
 
-	Print::Print(double inputX,double inputY)
+	Point::Point(double inputX,double inputY)
 	{
 		X=inputX;//set the value of X
 		Y=inputY;//set the value of Y
 
 	}
 	
-	double Print::getX()
+	double Point::getX()
 	{
 		return X;
 	}
-	double Print::getY()
+	double Point::getY()
 	{
 		return Y;
 	}
-
+	void Point::setXY(double setX,double setY)
+	{
+		X=setX;		
+		Y=setY;
+	}
 	
 //Square root of a number >= 0 
-	double Print::getSquareRoot(double number)
+	double Point::getSquareRoot(double number)
 	{
 		if (number<=0) return 0; // if <0 do not Calculation
 		double root = number;
@@ -48,7 +52,7 @@ namespace BB_A1
 		return root;
 	}			
 //format a double number to "%n.nf" and return a strings
-	string Print::formatStr(double number,unsigned int intSize, unsigned int bitSize) 
+	string Point::formatStr(double number,unsigned int intSize, unsigned int bitSize) 
 	{
 		
 
@@ -81,7 +85,7 @@ namespace BB_A1
 		return toStr;
 	}
 	
-	double Print::distanceOrigin()//calculate the distance of the point from the origin.
+	double Point::distanceOrigin()//calculate the distance of the point from the origin.
 	{
 		double tempNum;
 		tempNum=X*X+Y*Y;
@@ -93,11 +97,11 @@ namespace BB_A1
 	
 	
 //to string 
-	string Print::to_strings()
+	string Point::to_strings()
 	{
 
 		string fStr;
-		fStr="("+formatStr(X,4,2)+","+formatStr(Y,4,2)+")";// format the print to (x,y)
+		fStr="("+formatStr(X,4,2)+","+formatStr(Y,4,2)+")";// format the Point to (x,y)
 
 		return fStr;
 	}

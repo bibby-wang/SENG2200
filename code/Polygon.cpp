@@ -10,10 +10,9 @@
 
 #include <string>
 
-#include <iostream>
-#include <sstream>
 
 #include "point.h"
+
 #include "Polygon.h"
 using namespace std;
 namespace BB_A1
@@ -21,28 +20,35 @@ namespace BB_A1
 
 
 
-	~Polygon() //Destructor Node
+	Polygon::Polygon(int setEdgesNum,string pointsData)
 	{
-		point=NULL;
+		edgesNum=setEdgesNum;
+		points= new Point[edgesNum];
 		
+		//get polygon data
+
 		
-	}
-	Polygon::Polygon()
-	{
-		
-	}
-	Polygon::Polygon(string data,int l)
-	{
-		Point *point = Point[];
-		
-		
-		P[l]=data;
-		
-		for (int i = 0; i<=l; i++)
-		{
-			string P[i]=data;
+
+
+		for (int i=0;i<pointsData.size();i++)
+		{		
+			if (pointsData[i] != " ")
+			{
+				getInupurData >> dataStr;
+				
+				cout<<"x["<<dataStr<<"]";
+				getInupurData >> dataStr;
+				
+				cout<<"y:["<<dataStr<<"]";					
+				
+				
+				
+			}
+			
 		}
 			
+
+		
 	}
 	
 	

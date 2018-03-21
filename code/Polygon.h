@@ -23,10 +23,16 @@ namespace BB_A1
 	{
 		public:
 			
+			 //Destructor Node
+			~Polygon()
+			{
+				delete []points;
+			}
 			
-			~Polygon(){} //Destructor Node
-			Polygon();
-			Polygon(string data);
+			
+			Polygon(int edgesNum);
+			//Constructor
+			Polygon(){}
 			
 			
 			//the area of polygon
@@ -45,9 +51,8 @@ namespace BB_A1
 			string to_strings();
 		
 		private:
-			Point *p= Point;
-			int sideNum;
-			
+			Point *points;
+			int edgesNum;
 	};
 
 }
