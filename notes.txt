@@ -36,7 +36,7 @@ Point类只有x和y坐标值有两个双精度浮点值。
 
 It should have a method that will calculate the distance of the point from the origin. 
 它应该有一个方法来计算点与原点的距离。
-
+mkae
 Your Point class should also contain a to_string() method which will allow the conversion of a Point object into a String of the form (x,y) 
 – include the open and close parentheses and the comma in the String. 
 你的Point类还应该包含一个to_string（）方法，该方法允许将Point对象转换为形式为（x，y）的字符串 
@@ -64,6 +64,8 @@ You will also need a method to return the distance from the origin of the pointi
 
 Polygon will implement the ComparePoly interface (or your own interface) as per the above, and the Polygon comparison specification given below.
 Polygon将按照上述实现ComparePoly接口（或您自己的接口），以及下面给出的Polygon比较规范。
+
+
 
 You are also required to implement a Circular Doubly-Linked data structure with the class name of MyPolygons, using a single sentinel node to mark the start/finish of what will become a container for Polygon objects.
 您还需要使用MyPolygons的类名实现圆形双链接数据结构，使用单个标记节点标记将成为Polygon对象容器的开始/结束位置。
