@@ -56,8 +56,11 @@ For the area, the format to be used is 5.2f . This will be used for output of yo
 对于area的值，要使用的格式是5.2f。 这将用于输出结果。
 
 
-The Polygon class has a method that will calculate the area of the polygon, given by the formula above. You will also need a method to return the distance from the origin of the pointi=(xi,yi) vertex which is closest to the origin. 
-Polygon类具有计算多边形面积的方法，由上面的公式给出。 您还需要一种方法来返回距离原点最近的pointi =（xi，yi）顶点的的距离。
+The Polygon class has a method that will calculate the area of the polygon, given by the formula above. 
+Polygon类具有计算多边形面积的方法，由上面的公式给出。
+
+You will also need a method to return the distance from the origin of the pointi=(xi,yi) vertex which is closest to the origin. 
+ 您还需要一种方法来返回距离原点最近的pointi =（xi，yi）顶点的的距离。
 
 Polygon will implement the ComparePoly interface (or your own interface) as per the above, and the Polygon comparison specification given below.
 Polygon将按照上述实现ComparePoly接口（或您自己的接口），以及下面给出的Polygon比较规范。
@@ -124,13 +127,6 @@ You will need to properly con duct memory management.
 
 
 
-
-
-
-
-
-
-
 Written Report:
 书面报告：
 As you design, write and test your solution, you are to keep track of and report on the following:
@@ -147,9 +143,80 @@ As a guide, aim for between one and two pages, and format this as a report; not 
 
 Submission:
 Submission is through the Assessment tab for SENG2200 on Blackboard under the entry Submit PA1. If you submit more than once then only the latest will be graded. Every submission must contain a) an assessment item cover sheet, b) the written report, and c) your program source files. Please submit a single file called c9999999PA1.zip (where 9…9 is your student number); do not submit .rar or .gz or any other type of archive file.
+
+
 Coding Language and Compilation:
 Programming is in C++, and will be compiled as per the standard lab environment.
+编码语言和编译：
+编程采用C ++编写，并将按照标准实验室环境进行编译。
+
 Provide a makefile that the marker will expect to be able to compile your program with the command make, and to run your program with the command ./PA1, within a command prompt window.
-Your application will run and take data from a standard text file (in the form given above) which will include multiple polygons definitions – note: that you may assume that that number of points specified for the Polygon will always be correct – and will be specified from the command line, in form ./PA1 test.dat
-It is expected that PA1 will a) be in the root of your submission folder, and b) compile the entire project without any special requirements (including additional software). You may include a readme.txt file, if you require any special switches or compilation method to be used; but this may incur a penalty if you stray too far from the above guide lines.
+提供一个makefile，该标记可以使用make命令编译您的程序，并在命令提示符窗口中使用命令./PA1运行程序。
+
+Your application will run and take data from a standard text file (in the form given above) which will include multiple polygons definitions 
+您的应用程序将运行并从标准文本文件中获取数据（采用以上给定的格式），其中将包括多个多边形定义
+– note: that you may assume that that number of points specified for the Polygon will always be correct – and will be specified from the command line, in form ./PA1 test.dat
+- 注意：您可能会认为为多边形指定的点数总是正确的 - 并且将通过命令行以“./PA1 test.dat”形式指定
+It is expected that PA1 will 
+
+a) be in the root of your submission folder
+b) compile the entire project without any special requirements (including additional software). 
+
+a）位于提交文件夹的根目录下。
+b）在没有任何特殊要求的情况下编译整个项目（包括其他软件）。
+
+
+You may include a readme.txt file, if you require any special switches or compilation method to be used; but this may incur a penalty if you stray too far from the above guide lines.
+
+如果您需要使用任何特殊开关或编译方法，您可以包含一个readme.txt文件;但是如果你偏离上述指导方针，这可能会受到惩罚。
+
 You may only use C++ libraries for input and output. All input to the program will come from standard input. All output is to standard output.
+您只能使用C ++库进行输入和输出。程序的所有输入都来自标准输入。所有输出都是标准输出。
+
+-----------------------------------------------------------
+Note v1.1
+All input of polygons will be from test.dat file. That is, your program should be able
+to read polygons from the file. The sample format of test.dat file is as follows:
+P 6 4 0 4 8 7 8 7 3 9 0 7 1
+P 3 4 0 4 8 7 8
+P 5 4 0 4 8 7 8 7 3 9 0
+
+注意v1.1
+所有的多边形输入将来自test.dat文件。也就是说，你的程序应该可以
+从文件中读取多边形。 test.dat文件的示例格式如下所示：
+P 6 4 0 4 8 7 8 7 3 9 0 7 1
+P 3 4 0 4 8 7 8
+P 5 4 0 4 8 7 8 7 3 9 0
+
+
+Hint for ComparePoly interface: It is a pure abstract class (so-call “interface” in C++). Make sure you have declared dependent classes before make the interface.
+
+提示ComparePoly接口：它是一个纯粹的抽象类（在C ++中称为“接口”）。确保在创建接口之前已经声明了相关的类。
+
+4.2f and 5.2f: They are about the formatting of output. It is in form of <width>.<precision>. 5.2f means you reserve at least 5 places (including ‘.’) for output and there are two digits for precision. For example, if we have a number 3.456, the output of 5.2f is x3.46, where x is a space.
+
+4.2f和5.2f：它们是关于输出的格式。它的形式是<width>。<precision>。 5.2f表示您至少保留5个位置（包括'.'）用于输出，并且有两位数字用于输出。例如，如果我们有一个数字3.456，5.2f的输出是x3.46，其中x是一个空格。
+
+
+to_string() methods: You should return a string from the method rather than print it out.
+to_string（）方法：您应该从方法返回一个字符串，而不是将其打印出来
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
