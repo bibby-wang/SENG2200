@@ -15,11 +15,12 @@
 #include <iostream>
 
 #include "point.h"
+#include "ComparePoly.cpp"
 using namespace std;
 namespace BB_A1
 
 {
-	class Polygon
+	class Polygon: public ComparePoly
 	{
 		public:
 			
@@ -37,13 +38,15 @@ namespace BB_A1
 			Polygon(string dataStr);
 			
 			
-
+			void setData(string dataStr);
 			
 			
 			//the area of polygon
 			double getAreaOfPolygon();
-			
-			string closestToOrigin(); 
+			//int closestToOrigin();			
+			//string closestToOrigin(); 
+
+			double closestToOrigin();	
 			
 
 			

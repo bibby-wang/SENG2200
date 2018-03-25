@@ -1,0 +1,344 @@
+﻿// The University of Newcastle
+// School of Electrical Engineering and Computer Science
+// SENG2200 Programming Languages & Paradigms
+// Semester 1, 2018
+// Programming Assignment 1
+// Due Sunday March 25, 23:59pm
+// Author: Binbin Wang
+// Modified by: Binbin Wang
+// Student No: 3214157
+
+
+
+using namespace std;
+namespace BB_ASS
+{
+	
+	//Constructors, which return an empty LinkedList
+	template <typename object>
+	LinkedList<object>::LinkedList()
+	{
+		headPointer = new Node<object>();
+		tailPointer = NULL;
+		currentPointer = NULL;
+		listLength = 0;
+	}
+	
+	//Constructors, which has one data
+	template <typename object>
+	LinkedList<object>::LinkedList(const object& data)
+	{
+		headPointer = new Node<object>(data);
+		tailPointer = headPointer;
+		currentPointer = headPointer;
+		listLength = 1;
+	}
+	
+	//Destructor LinkedList 
+	template <typename object>
+	LinkedList<object>::~LinkedList()
+	{
+		while(headPointer!=NULL) removeFromHead(); //delete all 
+		tailPointer=NULL;
+	}
+
+	
+	//add the data in to Node head
+	template <typename object>
+	void LinkedList<object>::addToHead(const object& data)
+	{
+		if(listLength==0) 	//first Node
+		{
+			headPointer = new Node<object>(data);
+			tailPointer = headPointer;
+			listLength = 1;
+			
+		}
+		else
+		{
+			Node<object>* headInsert = new Node<object>(data);	//insert to head
+			headPointer -> setNext(headInsert);
+			headInsert -> setPrevious(headPointer);
+			currentPointer = headInsert;
+			headPointer = headInsert;
+			listLength++;
+			headInsert = NULL;
+		}
+		
+	}
+		
+	
+	
+	//add the data in to Node tail
+	template <typename object>
+	void LinkedList<object>::addToTail(const object& data)
+	{
+		if(listLength==0) 	//first Node
+		{
+			headPointer = new Node<object>(data);
+			tailPointer = headPointer;
+			listLength = 1;
+			
+		}
+		else
+		{
+			Node<object>* tailInsert = new Node<object>(data);	//insert to tail
+			tailPointer -> setNext(tailInsert);
+			tailInsert -> setPrevious(tailPointer);
+			currentPointer = tailInsert;
+			tailPointer = tailInsert;
+			listLength++;
+			tailInsert = NULL;
+		}
+		
+	}
+	
+	//remove One Node from Head 
+	template <typename object>
+	void LinkedList<object>::removeFromHead()
+	{
+		if (listLength==0)// empty LinkedList
+		{
+			delete headPointer;
+			headPointer=NULL;
+			return;
+		}
+		else if(listLength==1) //only one Node
+		{
+			delete headPointer;
+			headPointer=NULL;
+			tailPointer=NULL;
+			currentPointer = NULL;
+			listLength--;
+			return;
+			
+		}
+		else
+		{
+			Node<object>* tempHeadPointer = headPointer; //make a temp Pointer for change and delete data
+			headPointer = tempHeadPointer->getNext();
+			currentPointer = headPointer;
+			delete tempHeadPointer;
+			listLength--;
+			tempHeadPointer=NULL;
+			
+		}
+	}
+
+	//remove One Node from tail
+	template <typename object>
+	void LinkedList<object>::removeFromTail()
+	{
+		if (listLength==0)// empty LinkedList
+		{
+			return;
+		}
+		else if(listLength==1) //only one Node
+		{
+			delete tailPointer;
+			headPointer=NULL;
+			tailPointer=NULL;
+			currentPointer = NULL;
+			listLength--;
+			return;
+			
+		}
+		else
+		{
+			Node<object>* tempHeadPointer = tailPointer; //make a temp Pointer for change and delete data
+			tailPointer = tempHeadPointer->getPrevious();
+			currentPointer = tailPointer;
+			delete tempHeadPointer;
+			listLength--;
+			tempHeadPointer=NULL;
+			
+		}
+		
+	}
+
+	//get Head data
+	template <typename object>
+	object LinkedList<object>::getHead() const
+	{
+		return headPointer->getData(); // return Head data
+	}
+	
+	//get Tail data
+	template <typename object>
+	object LinkedList<object>::getTail() const
+	{
+		return tailPointer->getData();// return Tail data
+		
+	}
+	
+	
+
+
+	//removeOne() which takes a single word (represented as a string) argument and removeOnes any occurrence of that word in the LinkedList.
+	template <typename object>
+	void LinkedList<object>::removeOne(object& delWord)
+	{
+		currentPointer = headPointer;
+
+		do//fond the Node has same word
+		{ 
+
+			object data = currentPointer->getData();//get Node data
+
+			if(object(delWord)==object(data))
+			{
+
+				if(listLength==1)//only one Node
+				{					
+
+					delete headPointer;
+					headPointer=NULL;
+					tailPointer=NULL;
+					currentPointer = NULL;
+					listLength--;
+					return;
+
+				}
+				else if (currentPointer == headPointer)//fond the word in the head of linkedlist
+				{
+					
+					Node<object>* tempHeadPointer = headPointer;//make a temp Pointer for change and delete data
+					headPointer = tempHeadPointer->getNext();
+					currentPointer = headPointer;
+					delete tempHeadPointer;
+					listLength--;
+					tempHeadPointer=NULL;
+			
+		
+				}
+				else  //fond the word in the middle or tail of linkedlist
+				{
+
+					Node<object>* tempPointer = currentPointer;//make a temp Pointer for change and delete data
+					currentPointer=currentPointer->getPrevious();//get Previous of delete Word(Node)
+					currentPointer->setNext(tempPointer->getNext());//link to next node
+					currentPointer = currentPointer->getNext();	//go to next chack
+					if (currentPointer!=NULL)//the word in the tail of linkedlist
+					{
+						currentPointer->setPrevious(tempPointer->getPrevious());//link to next Previous (double chain node)
+					}
+					delete tempPointer;
+					listLength--;
+					tempPointer=NULL;
+
+					
+				}
+
+			}
+			else
+			{
+				currentPointer = currentPointer -> getNext();//go to next chack
+			}
+			
+		}while(currentPointer!=NULL);
+		
+	}
+	
+	
+	//which takes a single word (represented as a string) as argument 
+	//and returns a count of how many times the word appears in LinkedList.
+	template <typename object>
+	std::size_t LinkedList<object>::count(object& word)
+	{
+		std::size_t countNum=0;
+		
+		currentPointer = headPointer;// put the pointer to head
+
+		do
+		{
+			object data = currentPointer->getData();//get Node data
+
+			if(object(word)==object(data))//compared the word and data
+			{
+				countNum++; //if same, number+
+			}
+			currentPointer = currentPointer -> getNext();//goto next
+		}while(currentPointer!=NULL); 
+
+		
+		return countNum;//return the count number
+	}
+	
+
+	// * Overloaded concatenation operator (i.e. ‘+=’). 
+	//   The result of use of this operator is the LinkedList arguments are concatenated and the answer is stored in the left argument.
+	template <typename object>
+	void LinkedList<object>::operator += (const LinkedList& lList)//get right linkedlist use it link to left
+	{
+		Node<object>* cPointer = lList.getHeadPointer(); //get head of right linkedlist
+		
+		while(cPointer!=NULL)//set Node to left one by one NULL list do not need linked 
+		{
+			object xdata = cPointer->getData(); //get data 
+			addToTail(xdata);					//add in to left linkedlist
+			cPointer = cPointer -> getNext();	//go next
+		}
+	}
+	
+	//return the head Pointer
+	template <typename object>
+	Node<object>* LinkedList<object>::getHeadPointer() const
+	{
+		return headPointer; 
+	}
+	
+	//return the tail Pointer
+	template <typename object>
+	Node<object>* LinkedList<object>::getTailPointer() const
+	{
+		return tailPointer; 
+	}
+	
+	// return the number of node that in linkedlist
+	template <typename object>
+	std::size_t LinkedList<object>::length() const
+	{
+		return listLength;
+	}	
+	
+	// * Overloaded output operator (i.e. ‘<<’) that outputs the content of the LinkedList in a form suitable for Pointing.
+	template <typename object>
+	ostream& operator<<(ostream& out, LinkedList<object>& lList)
+	{
+		Node<object>* cPointer = lList.getHeadPointer();
+
+		while(cPointer!=NULL)
+		{
+			
+			out<<cPointer->getData()<<" "; // format the Point data
+			
+			cPointer = cPointer -> getNext();//go to next Node
+		}
+		
+		out<<endl;
+		
+		return out;//output 
+	}
+
+	
+
+	// * Overloaded input operator (i.e. ‘>>’) that simplifies input of the content of a LinkedList.
+	template <typename object>
+	istream & operator>>(istream &in, LinkedList<object>& lList)
+	{
+		
+		string inputWords;
+		getline(in,inputWords);  //get the input string
+		object tempInput;
+		istringstream stream(inputWords);	
+		
+		while(stream >> tempInput)  //change the string to object type
+		{
+			lList.addToTail(tempInput);// add the input in to linkedlist
+		}
+		return in;
+	}	
+
+
+	
+}

@@ -42,7 +42,7 @@ namespace BB_A1
 				double Y=stod(datas);
 				
 				points[i].setXY(X,Y);
-				cout<<i<<"====["<<X<<","<<Y<<"]"<<endl;
+				//cout<<i<<"====["<<X<<","<<Y<<"]"<<endl;
 			}
 			points[edgesNum]=points[0];
 		}
@@ -70,8 +70,17 @@ namespace BB_A1
 		
 	}
 	
-	//the closest point to  origin
-	string Polygon::closestToOrigin()
+	//the closest point to origin
+	// string Polygon::closestToOrigin()
+	// {
+
+		// ostringstream stream;
+		// stream<<this.closestToOrigin();
+		// string outputString="point"+stream.str()+"="+points[num].to_string();
+			// return outputString;
+	// }
+	//the closest point to origin
+	double Polygon::closestToOrigin()
 	{
 		double distanceOriginValue;
 		distanceOriginValue=points[0].distanceOrigin() ;
@@ -84,12 +93,8 @@ namespace BB_A1
 				num=i;
 			}
 		}
-		ostringstream stream;
-		stream<<num;
-		string outputString="point"+stream.str()+points[num].to_string();
-			return outputString;
+		return points[num].distanceOrigin();
 	}
-
 //Square root of a number >= 0 
 	double Polygon::getSquareRoot(double number)
 	{

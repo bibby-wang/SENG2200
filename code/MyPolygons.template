@@ -1,0 +1,113 @@
+// The University of Newcastle
+// School of Electrical Engineering and Computer Science
+// SENG2200 Programming Languages & Paradigms
+// Semester 1, 2018
+// Programming Assignment 1
+// Due Sunday March 25, 23:59pm
+// Author: Binbin Wang
+// Modified by: Binbin Wang
+// Student No: 3214157
+
+
+
+using namespace std;
+namespace BB_A1
+{
+	
+	//Constructors, which return an empty MyPolygons
+	template <typename object>
+	MyPolygons<object>::MyPolygons()
+	{
+		headPointer = new Node<object>();
+		currentPointer = NULL;
+		cirLstLength = 0;
+	}
+	
+	//Constructors, which has one data
+	template <typename object>
+	MyPolygons<object>::MyPolygons(const object& data)
+	{
+		headPointer = new Node<object>(data);
+		currentPointer = headPointer;
+		cirLstLength = 1;
+	}
+
+	//Destructor MyPolygons 
+	template <typename object>
+	MyPolygons<object>::~MyPolygons()
+	{
+
+		currentPointer=NULL;
+	}
+
+
+	//add the data in to Node head
+	template <typename object>
+	void MyPolygons<object>::prepend(const object& data)
+	{
+		if(cirLstLength==0) 	//first Node
+		{
+			headPointer = new Node<object>(data);
+			headPointer -> setNext(headPointer);
+			headPointer -> setPrevious(headPointer);
+			currentPointer = headPointer;
+			cirLstLength = 1;
+			
+		}
+		else
+		{
+			Node<object>* prependInsert = new Node<object>(data);	//insert to head
+			
+			prependInsert -> setNext(headPointer -> getNext());//头的下一个node成为新的node下一个
+			headPointer -> setNext(prependInsert);	//头的下一个node是新的node
+			
+			prependInsert -> setPrevious(headPointer);
+			
+			prependInsert->getNext()->setPrevious(prependInsert);
+
+			
+
+			currentPointer = prependInsert;
+
+			cirLstLength++;
+			prependInsert = NULL;
+		}
+		
+	}
+	template <typename object>
+	Node<object>* MyPolygons<object>::getHeadPointer() const
+	{
+		return headPointer;
+	}	
+
+
+	
+	
+	// * Overloaded output operator (i.e. ‘<<’) that outputs the content of the MyPolygons in a form suitable for Pointing.
+	template <typename object>
+	ostream& operator<<(ostream& out, MyPolygons<object>& allPolygons)
+	{
+		Node<object>* currentPointer = allPolygons.getHeadPointer();
+
+		do{
+			
+			out<<currentPointer->getData().to_string()<<" "; // format the Point data
+			
+			currentPointer = currentPointer -> getNext();//go to next Node
+		}while(currentPointer!=allPolygons.getHeadPointer());
+		
+		out<<endl;
+		
+		return out;//output 
+	}
+
+
+
+
+	
+
+
+
+
+	
+}

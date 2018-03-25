@@ -2,12 +2,14 @@
 #include <iostream>
 #include <fstream> 
 #include <string>
-#include "Point.h"
+
 #include "Polygon.h"
+#include "MyPolygons.h"
 
 
 using namespace std;
 using namespace BB_A1;
+
 int main(int argc, char *argv[])
 {
 	cout<<"====input test========"<<endl; 
@@ -25,26 +27,25 @@ int main(int argc, char *argv[])
 	string pData;
 
     //int count = 0;
-
+	MyPolygons<Polygon> myPolygons;
 	if(getInupurData) // find the file test.dat  
     { 
 	
 		
 		//while (getline(getInupurData,dataStr))
-		getline(getInupurData,dataStr);
+		while(getline(getInupurData,dataStr))
+		{
 		
-
-		cout<<dataStr<<endl; 
-		Polygon polygonA(dataStr);
-		cout<<"|||||"<<polygonA.to_string()<<endl;
 			
-		getline(getInupurData,dataStr);
-		
+			
+			cout<<dataStr<<endl; 
 
-		cout<<dataStr<<endl; 
-		Polygon polygonB(dataStr);
-		cout<<"|||||"<<polygonB.to_string()<<endl;
-		cout<<"|colsespoint:||"<<polygonB.closestToOrigin()<<endl;
+			Polygon tempP(dataStr);
+
+			cout<<tempP.to_string()<<endl;
+			myPolygons.prepend(tempP);
+		}	
+
 
 		
     }  
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
         cout <<"==Not found data file==" << endl;  
     } 
  
-	
+	cout<<myPolygons<<endl;	
 
 	cout<<"==================="<<endl;  
 
