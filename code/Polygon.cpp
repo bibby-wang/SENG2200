@@ -18,6 +18,11 @@ using namespace std;
 namespace BB_A1
 {
 
+	Polygon::Polygon()
+	{
+
+	}
+	
 
 
 	Polygon::Polygon(string dataStr)

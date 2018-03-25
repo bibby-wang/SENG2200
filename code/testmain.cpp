@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     ifstream getInupurData(inputDataFile);
     string dataStr;
     //string polygonData;
-	string pData;
+	Polygon pData;
 
     //int count = 0;
 	MyPolygons<Polygon> myPolygons;
@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 			cout<<dataStr<<endl; 
 
 			Polygon tempP(dataStr);
+			
 
 			cout<<tempP.to_string()<<endl;
 			myPolygons.prepend(tempP);
@@ -54,10 +55,11 @@ int main(int argc, char *argv[])
 		// not find the file data.txt 
         cout <<"==Not found data file==" << endl;  
     } 
- 
-	cout<<myPolygons<<endl;	
-
 	cout<<"==================="<<endl;  
+	cout<<"==ss="<<myPolygons.getSize()<<endl;	
+	cout<<"==ss="<<myPolygons<<endl;	
+
+ 	cout<<"==================="<<endl; 
 
 
 	return 0;

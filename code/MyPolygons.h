@@ -26,6 +26,7 @@ namespace BB_A1
 			~MyPolygons();
 			Node<object>* getHeadPointer()const;
 			void prepend(const object& data);
+			std::size_t getSize()const;
 		private:
 
 			Node<object>* headPointer;
@@ -37,7 +38,6 @@ namespace BB_A1
 	template <typename object>
 	ostream& operator<<(ostream& out, MyPolygons<object>& allPolygons);
 
-	  
 }
 #include "MyPolygons.template"
 #endif

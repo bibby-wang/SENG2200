@@ -79,6 +79,11 @@ namespace BB_A1
 	{
 		return headPointer;
 	}	
+	template <typename object>
+	std::size_t MyPolygons<object>::getSize() const
+	{
+		return cirLstLength;
+	}	
 
 
 	
@@ -88,13 +93,17 @@ namespace BB_A1
 	ostream& operator<<(ostream& out, MyPolygons<object>& allPolygons)
 	{
 		Node<object>* currentPointer = allPolygons.getHeadPointer();
-
-		do{
+		int i=allPolygons.getSize();
+		
+		while(i>0)
+		{
 			
 			out<<currentPointer->getData().to_string()<<" "; // format the Point data
 			
+
 			currentPointer = currentPointer -> getNext();//go to next Node
-		}while(currentPointer!=allPolygons.getHeadPointer());
+			i--;
+		}
 		
 		out<<endl;
 		
