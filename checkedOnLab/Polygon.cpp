@@ -9,9 +9,11 @@
 // Student No: 3214157
 
 #include <string>
+#include <cstdlib>
 
 
 #include "point.h"
+
 
 #include "Polygon.h"
 using namespace std;
@@ -23,8 +25,7 @@ namespace BB_A1
 
 	}
 	
-
-
+	//Constructor with data
 	Polygon::Polygon(string dataStr)
 	{
 		
@@ -34,7 +35,7 @@ namespace BB_A1
 		if (datas == "P")
 		{
 			polygonData>>datas;
-			edgesNum = stoi(datas);
+			edgesNum = atoi(datas.c_str());
 			points= new Point[edgesNum+1];
 	
 			//get polygon data
@@ -42,9 +43,9 @@ namespace BB_A1
 			for(int i=0;i<edgesNum;i++)
 			{
 				polygonData>>datas;
-				double X= stod(datas);
+				double X= atof(datas.c_str());
 				polygonData>>datas;
-				double Y=stod(datas);
+				double Y=atof(datas.c_str());
 				points[i].setXY(X,Y);
 			}
 			
@@ -75,48 +76,6 @@ namespace BB_A1
 		return areaOfPolygon*0.5;
 		
 	}
-	
-	//the closest point to origin
-	// string Polygon::closestToOrigin()
-	// {
-
-		// ostringstream stream;
-		// stream<<this.closestToOrigin();
-		// string outputString="point"+stream.str()+"="+points[num].to_string();
-			// return outputString;
-	// }
-	
-	
-	//any two Polygon have areas within 0.05% of each other
-	//then they are assumed to have equal area. 
-
-	// bool equalArea(Polygon cPolygon)
-	// {
-		// double cArea=cPolygon.getAreaOfPolygon();
-		// double oArea=this.getAreaOfPolygon();
-		// double temp;
-		// temp=cArea-oArea;
-		// if (temp<0)
-		// {
-			// temp*=-1;
-			// temp/=oArea;
-			// cout<<"==c1=="<<temp<<endl;
-		// }else
-		// {
-			// temp/=cArea;
-			// cout<<"==c1=="<<temp<<endl;
-		// }
-		// if (temp<=0.05)
-		// {
-			// return true;			
-		// }else{
-			// return false;
-		// }
-
-
-	// }
-	
-	
 	
 	
 	//the closest point to origin

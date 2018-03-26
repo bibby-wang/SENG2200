@@ -140,7 +140,7 @@ namespace BB_A1
 	}
 	
 	
-	
+	//move to next
 	template <typename object>
 	void MyPolygons<object>::next()
 	{
@@ -148,16 +148,26 @@ namespace BB_A1
 
 	}
 
+	//resetting currentPointer to head
 	template <typename object>
 	void MyPolygons<object>::resetting()
 	{
 		currentPointer=headPointer;
-		//headPointer=currentPointer;
+
 
 	}
 
 
 
+	
+
+	template <typename object>
+	object MyPolygons<object>::getHead() const
+	{
+
+		return currentPointer->getData();
+	}
+	
 	
 	template <typename object>
 	Node<object>* MyPolygons<object>::getHeadPointer() const
@@ -165,17 +175,7 @@ namespace BB_A1
 		return headPointer;
 	}	
 	
-	
-	template <typename object>
-	object MyPolygons<object>::getHead() const
-	{
 		
-		//return headPointer->getData();
-		return currentPointer->getData();
-	}
-	
-	
-	
 	
 	
 	

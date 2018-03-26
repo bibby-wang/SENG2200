@@ -5,8 +5,13 @@ namespace BB_A1
 class ComparePoly
 {
 	public:
-	//virtual string to_string() = 0;
+	
 	virtual double closestToOrigin() = 0;
+	
+	virtual double getAreaOfPolygon() = 0;
+	//virtual bool equalArea(Polygon cPolygon) = 0;
+	
+	
 
 	
 

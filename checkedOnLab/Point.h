@@ -8,60 +8,56 @@
 // Modified by: Binbin Wang
 // Student No: 3214157
 
-#ifndef POLYGON_
-#define POLYGON_
+#ifndef Point_H
+#define Point_H
 #include <string>
-
+#include <sstream>
 #include <iostream>
 
-#include "point.h"
-#include "ComparePoly.cpp"
 using namespace std;
 namespace BB_A1
 
 {
-	class Polygon: public ComparePoly
+	class Point
 	{
 		public:
 			
-			 //Destructor Node
-			~Polygon()
+			
+			~Point() //Destructor Node
 			{
-				//delete []points;
+				X=0.0;
+				Y=0.0;
+			}			
+			Point() //Destructor Node
+			{
+				X=0.0;
+				Y=0.0;
 			}
-			
-			//Constructor
-			Polygon();
 
+			Point(double inputX,double inputY);
 
-			//
-			Polygon(string dataStr);
-			
-			
-			void setData(string dataStr);
-			
-			
-			//the area of polygon
-			double getAreaOfPolygon();
-			//int closestToOrigin();			
-			//string closestToOrigin(); 
-
-			double closestToOrigin();	
-			//bool equalArea(Polygon cPolygon);
-				
 
 			
 			//Square root of a number >= 0 
  			double getSquareRoot(double number);
+ 
+			//calculate the distance of the point from the origin.	
+			double distanceOrigin();
 			
 			//format a double number to "%n.nf" and return a strings
 			string formatStr(double number,unsigned int intSize, unsigned int bitSize);
-			//to string 
+			// format the Point to string 
 			string to_string();
-		
+
+			double getX();
+			double getY();
+			void setXY(double setX,double setY);
+			
+
+			
 		private:
-			Point *points;
-			int edgesNum;
+			double X;
+			double Y;
 	};
 
 }

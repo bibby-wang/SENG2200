@@ -1,0 +1,68 @@
+﻿// The University of Newcastle
+// School of Electrical Engineering and Computer Science
+// SENG2200 Programming Languages & Paradigms
+// Semester 1, 2018
+// Programming Assignment 1
+// Due Monday, 26 March 2018
+// Author: Binbin Wang
+// Modified by: Binbin Wang
+// Student No: 3214157
+
+
+namespace BB_A1
+{
+	template <typename object>
+	Node<object>::Node()
+	{
+		next = NULL;
+		previous = NULL;
+	}
+	
+	
+	template <typename object>
+	Node<object>::Node(const object& inputData,Node<object>* nodeNext,Node<object>* nodePrevious)
+	{
+		data = inputData;
+		next = nodeNext;
+		previous = nodePrevious;
+	}
+	
+	//get data
+	template <typename object>
+	object Node<object>::getData()
+	{
+		return data;
+	}
+	// set data 
+	template <typename object>
+	void Node<object>::setData(const object& setData)
+	{
+		data = setData;
+	}
+	//set next pointer (double chain node)
+	template <typename object>
+	void Node<object>::setNext(Node* inputNext)
+	{
+		next = inputNext;
+	}
+	// set Previous pointer (double chain node) 
+	template <typename object>
+	void Node<object>::setPrevious(Node* inputPrevious)
+	{
+		previous = inputPrevious;
+	}
+	// get Next point
+	template <typename object>
+	Node<object>* Node<object>::getNext()
+	{
+		return next;
+	}
+	//// get Previous point
+	template <typename object>
+	Node<object>* Node<object>::getPrevious()
+	{
+		return previous;
+	}
+	
+}
+

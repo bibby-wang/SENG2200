@@ -34,28 +34,22 @@ namespace BB_A1
 			Polygon();
 
 
-			//
+			//Constructor with data
 			Polygon(string dataStr);
 			
-			
-			void setData(string dataStr);
 			
 			
 			//the area of polygon
 			double getAreaOfPolygon();
-			//int closestToOrigin();			
-			//string closestToOrigin(); 
 
 			double closestToOrigin();	
-			//bool equalArea(Polygon cPolygon);
-				
-
-			
+		
 			//Square root of a number >= 0 
  			double getSquareRoot(double number);
 			
 			//format a double number to "%n.nf" and return a strings
 			string formatStr(double number,unsigned int intSize, unsigned int bitSize);
+			
 			//to string 
 			string to_string();
 		

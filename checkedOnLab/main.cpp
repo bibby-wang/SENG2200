@@ -10,7 +10,7 @@
 using namespace std;
 using namespace BB_A1;
 
-
+//compare two areas within 0.05%
 bool equalArea(double oArea,double cArea)
 {
 	double temp;
@@ -20,13 +20,12 @@ bool equalArea(double oArea,double cArea)
 		temp*=-1;
 		temp/=(oArea+cArea);
 		temp*=2;
-		cout<<"==c1=="<<temp<<endl;
+
 	}
 	else
 	{
 		temp/=(oArea+cArea);
 		temp*=2;
-		cout<<"==c2=="<<temp<<endl;
 	}
 	
 	if (temp<=0.05)
@@ -46,7 +45,7 @@ bool equalArea(double oArea,double cArea)
 
 int main(int argc, char *argv[])
 {
-	//cout<<"====input test========"<<endl; 
+
 	
 	string inputDataFile;
 	inputDataFile = argv[1];
@@ -55,7 +54,7 @@ int main(int argc, char *argv[])
 
 
 	
-    ifstream getInupurData(inputDataFile);
+    ifstream getInputData(inputDataFile.c_str());
 	
     string polygonPointsData; //the points data
 	int countPolygon=0;
@@ -63,14 +62,13 @@ int main(int argc, char *argv[])
 
 	MyPolygons<Polygon> myPolygons1;//Polygons list one
 	MyPolygons<Polygon> myPolygons2;//Polygons list two
-	//MyPolygons<Polygon> myPolygons2;//temp Polygons first sotring only inscteasing order
 	
-	if(getInupurData) // find the data file   
+	if(getInputData) // find the data file   
     { 
 	
 
 		
-		while(getline(getInupurData,polygonPointsData))//get all data by lines
+		while(getline(getInputData,polygonPointsData))//get all data by lines
 		{
 
 			Polygon tempP(polygonPointsData);
@@ -103,7 +101,7 @@ int main(int argc, char *argv[])
 					{
 						if( j == 0 )
 						{
-							myPolygons2.prepend(tempPoly);
+							myPolygons2.prepend(tempPoly);//if the first make it at head
 						}
 						else{
 							myPolygons2.insert(tempPoly);
@@ -125,7 +123,7 @@ int main(int argc, char *argv[])
 
 					if( j == 0 )
 					{
-						myPolygons2.prepend(tempPoly);
+						myPolygons2.prepend(tempPoly);//if the first make it at head
 					}
 					else{
 						myPolygons2.insert(tempPoly);
@@ -144,7 +142,7 @@ int main(int argc, char *argv[])
 
 			}
 			
-			if (!putIn)
+			if (!putIn)//add at end of list 
 			{
 				
 				myPolygons2.insert(tempPoly);
@@ -154,13 +152,6 @@ int main(int argc, char *argv[])
 			
 		}
 
-		
-		
-		
-		
-		
-		
-		
     }  
     else 
     {  
@@ -169,39 +160,16 @@ int main(int argc, char *argv[])
     } 
 	
 	
-	
-		myPolygons1.resetting();
-		myPolygons2.resetting();
-	
-	
-	
-	cout<<"=======start============"<<endl;  
-	cout<<"==s1="<<myPolygons1.getSize()<<endl;	
+	//resetting all lists
+	myPolygons1.resetting();
+	myPolygons2.resetting();
+		
+	cout<<"====start===="<<endl;  
+	cout<<"==Polygon list 1=="<<endl;	
 	cout<<myPolygons1<<endl;	
 	
-	cout<<"==s2="<<myPolygons2.getSize()<<endl;	
+	cout<<"==Polygon list 2=="<<endl;	
 	cout<<myPolygons2<<endl;	
-
- 	cout<<"==================="<<endl; 
-
- 	cout<<"====1=========="<<endl; 
-	
-	myPolygons2.next();
-		cout<<myPolygons2.getHead().to_string()<<endl;;
- 	cout<<"==================="<<endl; 
-	myPolygons2.resetting();
-
- 	cout<<"====2=========="<<endl; 
-	
-	myPolygons2.next();
-		cout<<myPolygons2.getHead().to_string()<<endl;;
- 	cout<<"==================="<<endl; 
-	
- 	cout<<"====3=========="<<endl; 
-	
-	myPolygons2.next();
-		cout<<myPolygons2.getHead().to_string()<<endl;;
- 	cout<<"==================="<<endl; 
 
 	
 	return 0;
